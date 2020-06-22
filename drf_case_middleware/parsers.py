@@ -30,12 +30,12 @@ class CaseMultiPartParser(MultiPartParser):
     media_type = 'multipart/form-data'
 
     def parse(self, stream, media_type=None, parser_context=None):
-        """
+        '''
         Parses the incoming bytestream as a multipart encoded form,
         and returns a DataAndFiles object.
         `.data` will be a `QueryDict` containing all the form parameters.
         `.files` will be a `QueryDict` containing all the form files.
-        """
+        '''
         parser_context = parser_context or {}
         request = parser_context['request']
         encoding = parser_context.get('encoding', settings.DEFAULT_CHARSET)
@@ -46,9 +46,7 @@ class CaseMultiPartParser(MultiPartParser):
         try:
             parser = DjangoMultiPartParser(meta, stream, upload_handlers, encoding)
             data, files = parser.parse()
-            return DataAndFiles(
-                decamelize(data, **api_settings.JSON_UNDERSCOREIZE),
-                decamelize(files, **api_settings.JSON_UNDERSCOREIZE),
-            )
+
+            return DataAndFiles(decamelize(data), decamelize(files), )
         except MultiPartParserError as err:
             raise ParseError(f'Multipart form parse error - {err}')
