@@ -16,6 +16,11 @@ Add the render and parser to your django settings file.
 
 .. code-block:: python
 
+    MIDDLEWARE = [
+        # ... other middlewares
+        'drf_case_middleware.middlewares.CaseMiddleware',
+    ]
+
     REST_FRAMEWORK = {
 
         'DEFAULT_RENDERER_CLASSES': (

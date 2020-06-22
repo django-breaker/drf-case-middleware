@@ -1,23 +1,21 @@
 import os
 import sys
 
+from setuptools import setup
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from drf_case_middleware import __version__
 
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
-    sys.exit()
 
-readme = open('README.rst').read()
-import drf_case_middleware
+with open('README.rst', encoding='utf-8') as f:
+    readme = f.read()
+
 
 setup(
     name='drf-case-middleware',
-    version=drf_case_middleware.__version__,
+    version=__version__,
     description='Camel case to snake case and snake case to camel case for Django REST framework',
+    long_description=readme,
+    long_description_content_type='text/x-rst',
     author='Jiyoon Ha',
     author_email='punkkid001@gmail.com',
     url='https://github.com/django-breaker/drf-case-middleware',
