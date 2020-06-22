@@ -5,5 +5,10 @@
   </head>
   <body>
     <h1>{{ request_id }}</h1>
+
+    <form action="/form-data/" method="post" enctype="multipart/form-data">
+      <input name="testFile" type="file" accept=".pdf" />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>

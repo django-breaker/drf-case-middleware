@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o_^7h2z^z(stgstkg_z3#k!o_t)%j%$k510$dgdem0=u5gr6vc'
+SECRET_KEY = 'o_dem0z^z(stgstkg_z3#k!o_t)%j%$k510$dgdem0=u5gr6vc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -21,6 +21,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'drf_case_middleware.middlewares.CaseMiddleware',
 ]
 
 ROOT_URLCONF = 'demo.urls'
@@ -45,22 +46,19 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'drf_case_middleware.renders.CaseJSONRenderer',
         'drf_case_middleware.renders.CaseBrowsableAPIRenderer',
-        # Any other renders
     ),
 
     'DEFAULT_PARSER_CLASSES': (
-        # If you use MultiPartFormParser or FormParser, we also have a camel case version
         'drf_case_middleware.parsers.CaseFormParser',
         'drf_case_middleware.parsers.CaseMultiPartParser',
         'drf_case_middleware.parsers.CaseJSONParser',
-        # Any other parsers
+        # ... other parsers
     ),
 
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
     'UNAUTHENTICATED_USER': None,
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
-    # 'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer', ), 
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     'PAGE_SIZE': 20,
 }
 
