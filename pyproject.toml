@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "drf-case-middleware"
-version = "0.1.0"
+version = "0.1.2"
 description = "Camel case to snake case and snake case to camel case for Django REST framework"
 authors = ["punkyoon <punkkid001@gmail.com>"]
 license = "MIT"
