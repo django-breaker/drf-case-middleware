@@ -23,7 +23,11 @@ setup(
     package_dir={'drf_case_middleware': 'drf_case_middleware'},
     include_package_data=True,
     python_requires='>=3.6',
-    install_requires=[],
+    install_requires=[
+        'django>=2.1',
+        'djangorestframework>=3.11',
+        'pyhumps>=1.3',
+    ],
     license='MIT',
     zip_safe=False,
     keywords='drf-case-middleware',
